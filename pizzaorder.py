@@ -12,9 +12,7 @@ def select(menu,menuname):
 
     while True:
         p_name = input(f'주문할 {menuname}를 입력하세요(종료: exit): ')
-        if p_name == '0':
-            pass
-        elif p_name in menu:
+        if p_name in menu:
             count = int(input('수량을 입력하세요: '))
             order[p_name] = count       #딕셔너리에 데이터삽입
         elif p_name == 'exit':
@@ -23,19 +21,19 @@ def select(menu,menuname):
         else: 
             print('오류')
 
-        return order
-        # print(order_1)
+    return order
+    # print(order_1)
     
 def money_calc(order, menu, menu_name):
     tot_price = 0
-    for x in order_pizza.keys():
+    for x in order.keys():
         price = 0
         if x in menu.keys():
             price = price + (order[x] * menu[x])
         print(f'{x}({menu[x]}원) x {order[x]} = {price:,}원')
         tot_price = tot_price + price
 
-    print(f'{menu_name} 가격: {tot_price}')
+    print(f'{menu_name} 가격: {tot_price}원')
     return tot_price
 
 
@@ -53,7 +51,7 @@ if __name__ == '__main__':
     tot_pizza = money_calc(order_pizza, pizza_menu, '피자')
     tot_drink = money_calc(order_drink, drink_menu, '음료')
 
-    print(f'전체가격 : 피자 + 음료({tot_pizza + tot_drink})')
+    print(f'전체가격 : 피자 + 음료({tot_pizza + tot_drink}원)')
 
 
 
